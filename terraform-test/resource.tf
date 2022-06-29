@@ -5,15 +5,20 @@ provider "aws" {
 }
 #변수선언 
 #terraform.tfvars파일에 변수 선언 가능
-#echo 'AWS_REGION="ap-northeast-2" > ./terraform.tfvars
-#variable "AWS_REGION" {
-#  type = string
-#  default = "ap-northeast-2"
-#}
+variable "AWS_REGION" {
+  type = string
+}
+
+variable "AMIS" {
+  type = map(string)
+  default = {
+    ap-northeast-2 = "my ami"
+  }
+}
 
 #sample
 #resource {리소스유형} {이름}
 resource "aws_instance" "example" {
-  ami		= "${var.AMIS[var.AWS_REGION]}"
+  ami		= var.AMIS[var.AWS_REGION]
   instance_type = "t2.micro" #문자열이기때문에 항상 따옴표
 }
