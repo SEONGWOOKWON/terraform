@@ -1,6 +1,8 @@
 #변수 설정 파일
 #{} 빈공란은 값을 설정하지 않겠다는 의미
 #자격증명은 별도의 git ignore 처리가 되는 파일에 별도 보관, 저장소에 올리지 않기 위해
+#git ignore 파일은 git clone 된 폴더에 .gitignore파일 생성 후 */terraform.tfvars와 같이 선언
+#자격증명은 terraform.tfvars에 관리 
 variable "AWS_ACCESS_KEY" {
 }
 
